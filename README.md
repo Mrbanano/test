@@ -33,6 +33,7 @@ DEV.F busca crear un TODO APP interna donde el departamento de atencion a client
 
 
 * Utilizar el backend base.
+* Crear REST API.
 * Hacer los CRUD que se crean necesarios.
 * Solo hay borrado logico.
 * Se debe utilizar una base de datos(SQL o NoSQL)
@@ -45,6 +46,7 @@ DEV.F busca crear un TODO APP interna donde el departamento de atencion a client
 * Utilizar algún framework de CSS (Bootstrap, Materialize, Tailwind, etc.) para el maquetado de la aplicación.
 * Consumir todos los datos de la API previamente descritas arriba.
 * El sitio debe ser responsivo he intuitivo.
+* Manejo de errores (Errores de usuario, Errores del backend, Errores inesperados)
 
 **PLUS:**
 
