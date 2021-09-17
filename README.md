@@ -5,6 +5,7 @@
 
 DEV.F busca crear un TODO APP interna donde el departamento de atencion a cliente  pueda estar guardando los casos que va recibiendo de los alumnos. Estos TODOS debe ser asignados a un miembro del equipo de atencion a cliente para darle seguimiento a cada caso.
 
+**NOTA: TODO -> Tarea por hacer **
 
 ## Features
 
