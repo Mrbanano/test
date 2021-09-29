@@ -1,27 +1,26 @@
 var express = require('express');
 var router = express.Router();
 
+const {
+  getAllTickets,
+  getTicket,
+  createTicket,
+  updateTicketById,
+  deleteTicketById,
+} = require('../controllers/tickets.controller');
+
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.json({ message: 'tickets' });
-});
-/* GET  a user . */
-router.get('/:id', function (req, res, next) {
-  res.json({ message: 'tickets' });
-});
+router.get('/', getAllTickets);
+
 /* POST  user in listing. */
-router.post('/', function (req, res, next) {
-  const response = req.body;
-  console.log(response);
-  res.status(201);
-});
+router.post('/', createTicket);
+
+/* GET  a user */
+router.get('/:id', getTicket);
+
 /*UDPATE a  user  in listing. */
-router.put('/:id', function (req, res, next) {
-  res.json({ message: 'tickets' });
-});
+router.put('/:id', updateTicketById);
 /* DELETE a user  in listing. */
-router.delete('/:id', function (req, res, next) {
-  res.json({ message: 'tickets' });
-});
+router.delete('/:id', deleteTicketById);
 
 module.exports = router;

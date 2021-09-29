@@ -3,15 +3,26 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 
+/*
+  Require
+*/
 var indexRouter = require('./routes/index.routes');
 var usersRouter = require('./routes/users.routes');
 var ticketsRouter = require('./routes/tickets.routes');
 
 var app = express();
 
+/*
+  Middleware
+*/
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+/*
+  Routing
+*/
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
