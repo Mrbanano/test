@@ -10,8 +10,7 @@
   "scripts": {
     "dev:api": "npm run dev --workspace=todo-list-api",
     "backend": "npm start --workspace=todo-list-api",
-    "dev:backend": "npm run dev --workspace=todo-list-api",
-    "build":"npm run build --workspace=todo-list-api"
+    "dev:backend": "npm run dev --workspace=todo-list-api"
   },
   "repository": {
     "type": "git",

@@ -5,15 +5,21 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
   res.json({ message: 'tickets' });
 });
-/* GET users listing. */
-router.post('/', function (req, res, next) {
+/* GET  a user . */
+router.get('/:id', function (req, res, next) {
   res.json({ message: 'tickets' });
 });
-/* GET users listing. */
+/* POST  user in listing. */
+router.post('/', function (req, res, next) {
+  const response = req.body;
+  console.log(response);
+  res.status(201);
+});
+/*UDPATE a  user  in listing. */
 router.put('/:id', function (req, res, next) {
   res.json({ message: 'tickets' });
 });
-/* GET users listing. */
+/* DELETE a user  in listing. */
 router.delete('/:id', function (req, res, next) {
   res.json({ message: 'tickets' });
 });
