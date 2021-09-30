@@ -15,13 +15,15 @@ const schema = new Schema({
     type: String,
     required: true,
   },
-  idTaskManager: {
+  idTicketManager: {
     type: Number,
+    required: true,
   },
   versionKey: false,
   timestamp: true,
-  taskDate: {
+  ticketDate: {
     type: Date,
+    required: true,
   },
 });
 
