@@ -9,7 +9,7 @@ const createTicket = (req, res, next) => {
 
 const getAllTickets = (req, res, next) => {
   try {
-    res.send('tickets');
+    res.send({ message: 'Todas las tareas' });
   } catch (error) {
     console.log(new Error(error));
     next();

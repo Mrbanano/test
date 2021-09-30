@@ -10,6 +10,12 @@ var indexRouter = require('./routes/index.routes');
 var usersRouter = require('./routes/users.routes');
 var ticketsRouter = require('./routes/tickets.routes');
 
+const ui = require('swagger-ui-express');
+const swagger = require('swagger-jsdoc');
+const swaggerOptions = require('./swaggerOptions');
+const cssOptions = require('./options');
+const specs = swagger(swaggerOptions);
+
 var app = express();
 
 /*
@@ -24,9 +30,9 @@ app.use(express.urlencoded({ extended: false }));
   Routing
 */
 
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/tickets', ticketsRouter);
+app.use('/docs', ui.serve, ui.setup(specs, cssOptions));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

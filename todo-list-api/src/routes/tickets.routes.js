@@ -9,18 +9,76 @@ const {
   deleteTicketById,
 } = require('../controllers/tickets.controller');
 
-/* GET users listing. */
-router.get('/', getAllTickets);
+/**
+ * @swagger
+ * tasgs:
+ *  name: Tickets
+ *  description: Endpoint para realizar operaciones sobre las tareas
+ */
 
-/* POST  user in listing. */
+/**
+ * @swagger
+ * /tickets:
+ *  post:
+ *   summary: Crea una nueva tarea en el sistema
+ *   tags: [Tickets]
+ *   responses:
+ *     200:
+ *        description: lista de tareas
+ *        content:
+ */
 router.post('/', createTicket);
 
-/* GET  a user */
+/**
+ * @swagger
+ * /tickets:
+ *  get:
+ *   summary: Obtienes todas las tareas en formato JSON
+ *   tags: [Tickets]
+ *   responses:
+ *     200:
+ *        description: lista de tareas
+ *        content:
+ */
+router.get('/', getAllTickets);
+
+/**
+ * @swagger
+ * /tickets/:id :
+ *  get:
+ *   summary: Obtienes un ticket por su ID en formato JSON
+ *   tags: [Tickets]
+ *   responses:
+ *     200:
+ *        description: lista de tareas
+ *        content:
+ */
 router.get('/:id', getTicket);
 
-/*UDPATE a  user  in listing. */
+/**
+ * @swagger
+ * /tickets/:id  :
+ *  put:
+ *   summary: Actualiza un ticket por su ID y lo retorna en  formato JSON
+ *   tags: [Tickets]
+ *   responses:
+ *     200:
+ *        description: lista de tareas
+ *        content:
+ */
 router.put('/:id', updateTicketById);
-/* DELETE a user  in listing. */
+
+/**
+ * @swagger
+ * /tickets /:id  :
+ *  delete:
+ *   summary: Obtienes todas las tareas en formato JSON
+ *   tags: [Tickets]
+ *   responses:
+ *     200:
+ *        description: lista de tareas
+ *        content:
+ */
 router.delete('/:id', deleteTicketById);
 
 module.exports = router;
