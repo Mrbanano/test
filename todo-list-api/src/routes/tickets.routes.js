@@ -44,7 +44,7 @@ const {
  *        - idTicketManager
  *        - ticketDate
  *      example:
- *        id: gQBOyGbxcQy6tEp0aZ78X
+ *        id: 61563c1538b53b7dcc4927a0
  *        subject: "No puedo iniciar sesion"
  *        studen: "Juan Perex"
  *        description: "Desde el jueves no puede entrar a la pagina por que no recuerda su contraseña"
@@ -171,8 +171,8 @@ router.put('/:id', updateTicketById);
 
 /**
  * @swagger
- * /tickets/{id}:
- *  delete:
+ * /tickets/delete/{id}:
+ *  put:
  *    summary: Elimina un ticket por su ID
  *    tags: [Tickets]
  *    parameters:
@@ -191,6 +191,6 @@ router.put('/:id', updateTicketById);
  *            schema:
  *              $ref: '#/components/schemas/TicketNotFound'
  */
-router.delete('/:id', deleteTicketById);
+router.put('/delete/:id', deleteTicketById);
 
 module.exports = router;

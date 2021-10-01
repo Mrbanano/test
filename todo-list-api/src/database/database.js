@@ -3,8 +3,17 @@ const config = require('../config');
 
 (async () => {
   try {
-    const db = await mongoose.connect(config.MONGODB_URI);
-    console.log('Mongodb is connected to', db.connection.host);
+    const connection =
+      process.env.NODE_ENV === 'test'
+        ? config.MONGODB_URI_TEST
+        : config.MONGODB_URI;
+    const db = await mongoose.connect(connection);
+    console.log(
+      'Mongodb is connected to',
+      db.connection.host,
+      'in',
+      config.MONGODB_DATABASE
+    );
   } catch (error) {
     console.error(error);
   }

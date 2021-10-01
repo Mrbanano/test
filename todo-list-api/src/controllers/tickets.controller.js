@@ -1,42 +1,55 @@
-const createTicket = (req, res, next) => {
+const Ticket = require('../models/Tickets');
+
+const createTicket = async (req, res, next) => {
+  const ticket = new Ticket(req.body);
   try {
-    res.send('tickets');
+    const result = await ticket.save();
+    res.send(result);
   } catch (error) {
     console.log(new Error(error));
     next();
   }
 };
 
-const getAllTickets = (req, res, next) => {
+const getAllTickets = async (req, res, next) => {
   try {
-    res.send({ message: 'Todas las tareas' });
+    const result = await Ticket.find({ Delete: false });
+    res.status(200).send(result);
   } catch (error) {
     console.log(new Error(error));
     next();
   }
 };
 
-const getTicket = (req, res, next) => {
+const getTicket = async (req, res, next) => {
+  const id = req.params.id;
   try {
-    res.send('a ticket');
+    const result = await Ticket.findById(id);
+    res.json(result);
   } catch (error) {
     console.log(new Error(error));
     next();
   }
 };
 
-const deleteTicketById = (req, res, next) => {
+const deleteTicketById = async (req, res, next) => {
+  const id = req.params.id;
+  const { Delete } = req.body;
   try {
-    res.send('a ticket');
+    res.send(Delete);
   } catch (error) {
     console.log(new Error(error));
     next();
   }
 };
 
-const updateTicketById = (req, res, next) => {
+const updateTicketById = async (req, res, next) => {
+  const id = req.params.id;
   try {
-    res.send('a ticket');
+    const ticket = await Ticket.findByIdAndUpdate({ _id: id }, req.body, {
+      new: true,
+    });
+    res.status(201).send(ticket);
   } catch (error) {
     console.log(new Error(error));
   }
