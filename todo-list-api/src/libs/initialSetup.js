@@ -64,6 +64,7 @@ const initialSetups = async () => {
   await createRoles();
   await createDefaultAdmin();
   await createDefaultModerator();
+  console.log(process.env.NODE_ENV);
 };
 
 module.exports = { initialSetups };
