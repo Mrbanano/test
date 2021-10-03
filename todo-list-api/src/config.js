@@ -13,6 +13,10 @@ const configurations = {
   }/${process.env.MONGODB_DATABASE_TEST || 'To-Do-App'}`,
 
   SECRET: process.env.SECRET || 'SECRETO-DE-PRUEBA',
+  DEFAULT_ADMIN: process.env.DEFAULT_ADMIN || 'admin',
+  DEFAULT_ADMIN_PASSWORD: process.env.DEFAULT_ADMIN_PASSWORD || 'admin',
+  DEFAULT_MODERATOR: process.env.DEFAULT_ADMIN || 'moderator',
+  DEFAULT_MODERATOR_PASSWORD: process.env.DEFAULT_ADMIN_PASSWORD || 'Hola',
 };
 
 module.exports = configurations;

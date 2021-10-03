@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index.routes');
 var usersRouter = require('./routes/users.routes');
 var ticketsRouter = require('./routes/tickets.routes');
 var authRouting = require('./routes/auth.routes');
+var { initialSetups } = require('./libs/initialSetup');
 
 /*
  * Docs
@@ -25,7 +26,7 @@ const specs = swagger(swaggerOptions);
  */
 var app = express();
 const db = require('./database/database');
-
+initialSetups();
 /*
   Middleware
 */
@@ -34,7 +35,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-/*
+/*  
   Routing
 */
 
