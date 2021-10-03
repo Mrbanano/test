@@ -17,7 +17,8 @@ const schema = new Schema(
       required: true,
     },
     idTicketManager: {
-      type: Number,
+      ref: 'User',
+      type: Schema.Types.ObjectId,
     },
     ticketDate: {
       type: String,
@@ -26,9 +27,8 @@ const schema = new Schema(
     Delete: {
       type: Boolean,
     },
-    versionKey: false,
   },
-  { timestamps: true }
+  { versionKey: false, timestamps: true }
 );
 
 const Ticket = model('Ticket', schema);

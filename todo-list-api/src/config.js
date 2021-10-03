@@ -11,6 +11,8 @@ const configurations = {
   MONGODB_URI_TEST: `mongodb://${
     process.env.MONGODB_HOST_TEST || 'localhost'
   }/${process.env.MONGODB_DATABASE_TEST || 'To-Do-App'}`,
+
+  SECRET: process.env.SECRET || 'SECRETO-DE-PRUEBA',
 };
 
 module.exports = configurations;

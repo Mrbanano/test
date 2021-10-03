@@ -1,10 +1,20 @@
 const Ticket = require('../models/Tickets');
 
 const createTicket = async (req, res, next) => {
+  const { idTicketManager } = req.body;
+
   const ticket = new Ticket(req.body);
   try {
-    const result = await ticket.save();
-    res.send(result);
+    const ticketActive = await Ticket.find({
+      Delete: false,
+      idTicketManager: idTicketManager,
+    });
+    if (ticketActive.length < 5) {
+      const result = await ticket.save();
+      res.send(result);
+    } else {
+      res.send({ message: `el usuario ya tiene 5 tareas asignadas` });
+    }
   } catch (error) {
     console.log(new Error(error));
     next();
