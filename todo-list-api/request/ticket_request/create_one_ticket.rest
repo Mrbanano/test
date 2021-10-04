@@ -1,0 +1,10 @@
+POST  http://localhost:3000/tickets HTTP/1.1
+Content-Type: application/json
+
+{
+  subject: "No puedo iniciar sesion",
+  studen: "Juan Perex",
+  description: "Desde el jueves no puede entrar a la pagina por que no recuerda su contraseña",
+  idTaskManager: 358,
+  taskDate:"29/09/2021"
+}
