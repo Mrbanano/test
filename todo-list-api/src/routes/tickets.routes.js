@@ -179,6 +179,30 @@ router.get('/:id', [verifyToken, isModerator], getTicket);
 
 /**
  * @swagger
+ * /api/tickets/delete/{id}:
+ *  put:
+ *    summary: Elimina un ticket por su ID
+ *    tags: [Tickets]
+ *    parameters:
+ *      - $ref: '#/components/parameters/ticketsId'
+ *    responses:
+ *      200:
+ *        description: El ticket se elimino correctamente
+ *        content:
+ *          application/json:
+ *            schema:
+ *            $ref: '#/components/schemas/Tickets'
+ *      404:
+ *        description: El ticket no se elimino correctamente
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/components/schemas/TicketNotFound'
+ */
+router.get('/delete/:id', [verifyToken, isModerator], deleteTicketById);
+
+/**
+ * @swagger
  * /api/tickets/{id}:
  *  put:
  *    summary: Actualizas un ticket por su ID y lo regresa en formato JSON
@@ -200,29 +224,5 @@ router.get('/:id', [verifyToken, isModerator], getTicket);
  *              $ref: '#/components/schemas/TicketNotFound'
  */
 router.put('/:id', [verifyToken, isModerator], updateTicketById);
-
-/**
- * @swagger
- * /api/tickets/delete/{id}:
- *  put:
- *    summary: Elimina un ticket por su ID
- *    tags: [Tickets]
- *    parameters:
- *      - $ref: '#/components/parameters/ticketsId'
- *    responses:
- *      200:
- *        description: El ticket se elimino correctamente
- *        content:
- *          application/json:
- *            schema:
- *            $ref: '#/components/schemas/Tickets'
- *      404:
- *        description: El ticket no se elimino correctamente
- *        content:
- *          application/json:
- *            schema:
- *              $ref: '#/components/schemas/TicketNotFound'
- */
-router.put('/delete/:id', [verifyToken, isModerator], deleteTicketById);
 
 module.exports = router;

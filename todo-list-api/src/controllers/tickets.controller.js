@@ -69,9 +69,21 @@ const getTicket = async (req, res, next) => {
 
 const deleteTicketById = async (req, res, next) => {
   const id = req.params.id;
-  const { Delete } = req.body;
   try {
-    res.send(Delete);
+    const ticket = await Ticket.findOne({ _id: id });
+    if (ticket.Delete === true)
+      return res.status(201).send({ message: `the ticket is deleted` });
+
+    const Delete = true;
+
+    const ticketDelete = await Ticket.findByIdAndUpdate(
+      { _id: id },
+      { Delete },
+      {
+        new: true,
+      }
+    );
+    res.status(201).send({ message: `the ticket was successfully deleted` });
   } catch (error) {
     console.log(new Error(error));
     next();
