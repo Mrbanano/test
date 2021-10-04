@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+const { verifyToken, isModerator, isAdmin } = require('../middlewares/authJwt');
 
 const {
   createUser,
   getAllUsers,
+  getAllMods,
   getUser,
   deleteUserById,
   updateUserById,
@@ -85,7 +87,7 @@ const {
  *        description: Algo fallo en el servidor
  *
  */
-router.post('/', createUser);
+router.post('/', [verifyToken, isAdmin], createUser);
 
 /**
  * @swagger
@@ -104,8 +106,13 @@ router.post('/', createUser);
  *                $ref: '#/components/schemas/Users'
  *
  */
-router.get('/', getAllUsers);
+router.get('/', [verifyToken, isAdmin], getAllUsers);
 
+/**
+ * todos los mods
+ */
+
+router.get('/moderator/', [verifyToken, isModerator], getAllMods);
 /**
  * @swagger
  * /users/{id}:
@@ -128,7 +135,8 @@ router.get('/', getAllUsers);
  *            schema:
  *              $ref: '#/components/schemas/UserNotFound'
  */
-router.get('/:id', getUser);
+
+router.get('/:id', [verifyToken, isAdmin], getUser);
 
 /**
  * @swagger
@@ -152,12 +160,12 @@ router.get('/:id', getUser);
  *            schema:
  *              $ref: '#/components/schemas/userNotFound'
  */
-router.put('/:id', updateUserById);
+router.put('/:id', [verifyToken, isAdmin], updateUserById);
 
 /**
  * @swagger
- * /users/{id}:
- *  delete:
+ * /user/delete/{id}:
+ *  put:
  *    summary: Elimina un usuario por su ID
  *    tags: [Users]
  *    parameters:
@@ -176,6 +184,6 @@ router.put('/:id', updateUserById);
  *            schema:
  *              $ref: '#/components/schemas/userNotFound'
  */
-router.delete('/:id', deleteUserById);
+router.put('/delete/:id', [verifyToken, isAdmin], deleteUserById);
 
 module.exports = router;

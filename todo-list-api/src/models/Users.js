@@ -12,6 +12,10 @@ const schema = new Schema(
       type: String,
       trim: true,
     },
+    Delete: {
+      type: Boolean,
+      required: true,
+    },
     roles: [{ ref: 'Role', type: Schema.Types.ObjectId }],
     tickets: [{ ref: 'Ticket', type: Schema.Types.ObjectId }],
   },

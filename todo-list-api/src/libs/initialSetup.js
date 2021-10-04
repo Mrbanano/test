@@ -29,6 +29,7 @@ const createDefaultAdmin = async () => {
     const newUser = new User({
       userName: config.DEFAULT_ADMIN,
       password: await User.encryptPassword(config.DEFAULT_ADMIN_PASSWORD),
+      Delete: false,
     });
     const role = await Role.findOne({ name: 'admin' });
     newUser.roles = [role._id];
@@ -50,6 +51,7 @@ const createDefaultModerator = async () => {
     const newUser = new User({
       userName: config.DEFAULT_MODERATOR,
       password: await User.encryptPassword(config.DEFAULT_MODERATOR_PASSWORD),
+      Delete: false,
     });
     const role = await Role.findOne({ name: 'moderator' });
     newUser.roles = [role._id];

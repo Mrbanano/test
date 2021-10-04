@@ -19,6 +19,7 @@ const schema = new Schema(
     idTicketManager: {
       ref: 'User',
       type: Schema.Types.ObjectId,
+      required: true,
     },
     ticketDate: {
       type: String,

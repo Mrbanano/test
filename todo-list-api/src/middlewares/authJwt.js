@@ -22,7 +22,6 @@ const isModerator = async (req, res, next) => {
   try {
     const user = await User.findById(req.userId, { password: 0 });
     const roles = await Role.find({ _id: { $in: user.roles } });
-
     for (let i = 0; i < roles.length; i++) {
       if (roles[i].name === 'moderator') {
         next();
@@ -42,13 +41,11 @@ const isAdmin = async (req, res, next) => {
     const roles = await Role.find({ _id: { $in: user.roles } });
 
     for (let i = 0; i < roles.length; i++) {
-      console.log(roles[i].name);
       if (roles[i].name === 'admin') {
         next();
         return;
       }
     }
-
     return res.status(403).send({ message: 'token invalid ' });
   } catch (error) {
     console.log(new Error(error));

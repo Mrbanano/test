@@ -6,6 +6,7 @@ const {
   getAllTickets,
   getTicket,
   createTicket,
+  getAllfromMods,
   updateTicketById,
   deleteTicketById,
 } = require('../controllers/tickets.controller');
@@ -69,6 +70,13 @@ const {
  *      schema:
  *        type: string
  *      description: el ticket id
+ *    token:
+ *      name: x-access-token
+ *      in: header
+ *      requiered: true
+ *      schema:
+ *        type: string
+ *        description: token de acceso
  */
 
 /**
@@ -80,7 +88,7 @@ const {
 
 /**
  * @swagger
- * /tasks:
+ * /api/tickets:
  *  post:
  *    summary: Crea un ticket en el sistema.
  *    tags: [Tickets]
@@ -105,10 +113,12 @@ router.post('/', [verifyToken, isModerator], createTicket);
 
 /**
  * @swagger
- * /tickets:
+ * /api/tickets:
  *  get:
  *   summary: Obtienes todas los tickets en formato JSON
  *   tags: [Tickets]
+ *   parameters:
+ *     - $ref: '#/components/parameters/token'
  *   responses:
  *     200:
  *        description: lista de tareas
@@ -120,11 +130,32 @@ router.post('/', [verifyToken, isModerator], createTicket);
  *                $ref: '#/components/schemas/Tickets'
  *
  */
-router.get('/', [verifyToken, isAdmin], getAllTickets);
+router.get('/', [verifyToken, isModerator], getAllTickets);
 
 /**
  * @swagger
- * /tickets/{id}:
+ * /api/tickets/manager:
+ *  get:
+ *   summary: Obtienes todas los tickets en formato JSON
+ *   tags: [Tickets]
+ *   parameters:
+ *     - $ref: '#/components/parameters/token'
+ *   responses:
+ *     200:
+ *        description: lista de tareas
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: '#/components/schemas/Tickets'
+ *
+ */
+router.get('/Manager/:managerId', [verifyToken, isModerator], getAllfromMods);
+
+/**
+ * @swagger
+ * /api/tickets/{id}:
  *  get:
  *    summary: Obtienes un ticket por su ID en formato JSON
  *    tags: [Tickets]
@@ -147,12 +178,8 @@ router.get('/', [verifyToken, isAdmin], getAllTickets);
 router.get('/:id', [verifyToken, isModerator], getTicket);
 
 /**
- * falta un metodo para ver las notas por manager
- */
-
-/**
  * @swagger
- * /tickets/{id}:
+ * /api/tickets/{id}:
  *  put:
  *    summary: Actualizas un ticket por su ID y lo regresa en formato JSON
  *    tags: [Tickets]
@@ -176,7 +203,7 @@ router.put('/:id', [verifyToken, isModerator], updateTicketById);
 
 /**
  * @swagger
- * /tickets/delete/{id}:
+ * /api/tickets/delete/{id}:
  *  put:
  *    summary: Elimina un ticket por su ID
  *    tags: [Tickets]

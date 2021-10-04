@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var helmet = require('helmet');
 var path = require('path');
 var logger = require('morgan');
 
@@ -32,6 +33,7 @@ initialSetups();
 */
 
 app.use(logger('dev'));
+app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

@@ -1,23 +1,48 @@
 const Ticket = require('../models/Tickets');
+const User = require('../models/Users');
 
 const createTicket = async (req, res, next) => {
-  const { idTicketManager } = req.body;
+  const { subject, studen, description, idTicketManager, ticketDate } =
+    req.body;
 
-  const ticket = new Ticket(req.body);
+  const ticket = new Ticket({
+    subject,
+    studen,
+    description,
+    idTicketManager,
+    ticketDate,
+    Delete: false,
+  });
+
   try {
+    const mod = await User.findById(idTicketManager);
+
+    if (!mod) return res.status(406).send({ message: `the ticket not saved` });
+
     const ticketActive = await Ticket.find({
       Delete: false,
       idTicketManager: idTicketManager,
     });
+
     if (ticketActive.length < 5) {
       const result = await ticket.save();
-      res.send(result);
+      const tickets = mod.tickets;
+      tickets.push(result._id);
+      const addTicket = await User.findByIdAndUpdate(
+        { _id: mod._id },
+        { tickets },
+        {
+          new: true,
+        }
+      );
+      res.send(addTicket);
     } else {
-      res.send({ message: `el usuario ya tiene 5 tareas asignadas` });
+      res.status(406).send({ message: `the user haver 5 tickets` });
     }
   } catch (error) {
     console.log(new Error(error));
     next();
+    return res.status(406).send({ message: `the ticket not saved` });
   }
 };
 
@@ -66,9 +91,25 @@ const updateTicketById = async (req, res, next) => {
   }
 };
 
+const getAllfromMods = async (req, res, next) => {
+  const id = req.params.managerId;
+  try {
+    const mod = await User.findOne(
+      { _id: id, Delete: false },
+      { password: 0 }
+    ).populate('tickets');
+    res.send(mod.tickets);
+  } catch (error) {
+    console.log(new Error(error));
+    next();
+    return res.status(406).send({ message: `no tickets for this moderatior` });
+  }
+};
+
 module.exports = {
   createTicket,
   getAllTickets,
+  getAllfromMods,
   getTicket,
   deleteTicketById,
   updateTicketById,
