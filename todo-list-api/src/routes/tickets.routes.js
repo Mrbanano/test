@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const { verifyToken, isModerator, isAdmin } = require('../middlewares/authJwt');
 
 const {
   getAllTickets,
@@ -100,7 +101,7 @@ const {
  *        description: Algo fallo en el servidor
  *
  */
-router.post('/', createTicket);
+router.post('/', [verifyToken, isModerator], createTicket);
 
 /**
  * @swagger
@@ -119,7 +120,7 @@ router.post('/', createTicket);
  *                $ref: '#/components/schemas/Tickets'
  *
  */
-router.get('/', getAllTickets);
+router.get('/', [verifyToken, isAdmin], getAllTickets);
 
 /**
  * @swagger
@@ -143,7 +144,11 @@ router.get('/', getAllTickets);
  *            schema:
  *              $ref: '#/components/schemas/TicketNotFound'
  */
-router.get('/:id', getTicket);
+router.get('/:id', [verifyToken, isModerator], getTicket);
+
+/**
+ * falta un metodo para ver las notas por manager
+ */
 
 /**
  * @swagger
@@ -167,7 +172,7 @@ router.get('/:id', getTicket);
  *            schema:
  *              $ref: '#/components/schemas/TicketNotFound'
  */
-router.put('/:id', updateTicketById);
+router.put('/:id', [verifyToken, isModerator], updateTicketById);
 
 /**
  * @swagger
@@ -191,6 +196,6 @@ router.put('/:id', updateTicketById);
  *            schema:
  *              $ref: '#/components/schemas/TicketNotFound'
  */
-router.put('/delete/:id', deleteTicketById);
+router.put('/delete/:id', [verifyToken, isModerator], deleteTicketById);
 
 module.exports = router;

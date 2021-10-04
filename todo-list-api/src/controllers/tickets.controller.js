@@ -62,6 +62,7 @@ const updateTicketById = async (req, res, next) => {
     res.status(201).send(ticket);
   } catch (error) {
     console.log(new Error(error));
+    next();
   }
 };
 
