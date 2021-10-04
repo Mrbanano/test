@@ -11,9 +11,10 @@
     "dev:api": "npm run dev --workspace=todo-list-api",
     "backend": "npm start --workspace=todo-list-api",
     "dev:backend": "npm run dev --workspace=todo-list-api",
+    "dev:frontend": "npm start --workspace=todo-list-app",
     "test:backend": "npm run test --workspace=todo-list-api",
     "test:watchapi": "npm run test:watch --workspace=todo-list-api"
-  },
+  }, 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mrbanano/test.git"
