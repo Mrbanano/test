@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/Mrbanano"><img src="https://i.postimg.cc/MZrsBD2Q/logo-devf-negro.png" width="75%"></a>
+  <a href="https://github.com/Mrbanano"><img src="https://i.postimg.cc/MZrsBD2Q/logo-devf-negro.png" width="35%"></a>
 </div>
 
 <br>
