@@ -1,0 +1,7 @@
+.Avatar {
+  margin-inline-end: 9px;
+}
+.Avatar-content > img {
+  inline-size: 100%;
+  block-size: 100%;
+}

@@ -1,0 +1,11 @@
+.TicketFormBtn-content {
+  inline-size: 24px;
+  block-size: 24px;
+}
+
+.TicketFormBtn-content > button {
+}
+
+.selected {
+  transform: rotate(-45deg);
+}

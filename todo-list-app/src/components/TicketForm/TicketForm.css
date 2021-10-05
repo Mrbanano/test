@@ -1,0 +1,15 @@
+.TicketForm {
+  margin-block: 30px;
+}
+
+.input {
+  margin-block-end: 20px;
+}
+
+.date {
+  inline-size: 100%;
+}
+.btn-agregar {
+  inline-size: 100%;
+  background-color: #d879f2;
+}

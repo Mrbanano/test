@@ -10,7 +10,10 @@
   "scripts": {
     "dev:api": "npm run dev --workspace=todo-list-api",
     "backend": "npm start --workspace=todo-list-api",
-    "dev:backend": "npm run dev --workspace=todo-list-api"
+    "dev:backend": "npm run dev --workspace=todo-list-api",
+    "dev:frontend": "npm start --workspace=todo-list-app",
+    "test:backend": "npm run test --workspace=todo-list-api",
+    "test:watchapi": "npm run test:watch --workspace=todo-list-api"
   },
   "repository": {
     "type": "git",
@@ -28,6 +31,7 @@
   },
   "homepage": "https://github.com/Mrbanano/test#readme",
   "devDependencies": {
+    "autoprefixer": "^10.3.6",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
@@ -36,7 +40,13 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.26.0",
+    "eslint-plugin-tailwindcss": "^1.16.1",
     "nodemon": "^2.0.12",
-    "prettier": "^2.4.1"
+    "postcss-cli": "^9.0.1",
+    "prettier": "^2.4.1",
+    "tailwindcss": "^2.2.16"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3"
   }
 }
