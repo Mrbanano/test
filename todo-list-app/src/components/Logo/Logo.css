@@ -1,0 +1,8 @@
+.Logo-content {
+  display: flex;
+  justify-content: center;
+}
+
+.Logo-content > img {
+  display: none;
+}

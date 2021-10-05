@@ -1,0 +1,21 @@
+.Tickets-content {
+  margin-inline: auto;
+  inline-size: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Tickets-content > img {
+  margin-inline: auto;
+  inline-size: 80%;
+}
+
+.Tickets-content > p {
+  padding-block: 10px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 23px;
+
+  text-align: center;
+}

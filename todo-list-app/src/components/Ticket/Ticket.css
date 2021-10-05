@@ -1,0 +1,51 @@
+.Ticket {
+  margin-block: 24px;
+}
+.Ticket-content {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding-inline: 10px;
+  padding-block-start: 16px;
+  padding-block-end: 5px;
+}
+.Ticket-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.subject {
+  margin-block: 3px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+.description {
+  margin-block: 14px;
+}
+
+.text-ticket {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.Ticket-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ticketDate {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.Ticket-mangager {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

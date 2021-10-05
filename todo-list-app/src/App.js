@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Header from './components/Header';
+import Moderator from './components/Moderator';
+import Admin from './components/Admin';
+import LoginForm from './components/LoginForm';
+
+import clienteAxios from './config/axios';
+
+const AppContext = React.createContext();
 
 function App() {
+  const [role, setrole] = useState('moderator');
+  const [user, setUser] = useState({});
+
+  useEffect(() => {}, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext.Provider value={{}}>
+      <div className="App">
+        <div className="App-container ">
+          <div className="App-content">
+            <Header />
+            {!user ? (
+              <LoginForm />
+            ) : role === 'admin' ? (
+              <Admin />
+            ) : (
+              <Moderator />
+            )}
+          </div>
+        </div>
+      </div>
+    </AppContext.Provider>
   );
 }
 

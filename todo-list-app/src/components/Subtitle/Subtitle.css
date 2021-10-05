@@ -1,0 +1,10 @@
+.Subtitle-content {
+  margin-block-end: 24px;
+  margin-block-start: 40px;
+}
+.Subtitle-content > p {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 23px;
+}

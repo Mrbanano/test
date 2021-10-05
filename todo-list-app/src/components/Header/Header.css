@@ -1,0 +1,9 @@
+.Header {
+  background-color: var(--Backgroud);
+}
+.Header-container {
+  width: 100%;
+}
+
+.Header-content {
+}

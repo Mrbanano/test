@@ -4,7 +4,12 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['plugin:react/recommended', 'standard', 'prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'standard',
+    'prettier',
+    'plugin:tailwindcss/recommended',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -13,5 +18,9 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react'],
-  rules: {},
+  rules: {
+    'tailwindcss/classnames-order': 'warn',
+    'tailwindcss/no-custom-classname': 'warn',
+    'tailwindcss/no-contradicting-classname': 'error',
+  },
 };

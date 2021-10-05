@@ -1,0 +1,15 @@
+.Profile-container {
+  margin-block-start: 40px;
+  margin-block-end: 20px;
+}
+
+.Profile-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Profile-info {
+  display: flex;
+  align-items: center;
+}
