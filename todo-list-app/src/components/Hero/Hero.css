@@ -1,0 +1,14 @@
+.Hero {
+  width: 100%;
+}
+.Hero-content {
+  margin-block-start: 23px;
+  margin-inline: auto;
+  inline-size: 292px;
+  block-size: 292px;
+}
+
+.Hero-content > img {
+  inline-size: 100%;
+  block-size: 100%;
+}

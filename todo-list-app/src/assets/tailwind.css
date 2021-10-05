@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.headline {
+  @apply text-lg font-bold;
+}
+
+.check {
+  @apply border-black border-solid border-2;
+}
+.check-red {
+  @apply border-red-500 border-solid border-2;
+}
+.check-blue {
+  @apply border-blue-600 border-solid border-2;
+}
+.input {
+  @apply px-2 py-1 placeholder-gray-400 text-gray-600 relative bg-white bg-white rounded text-sm border border-gray-400 outline-none focus:outline-none focus:ring w-full;
+}
+.btn-agregar {
+  @apply hover:bg-green-300 text-gray-50 font-semibold py-2 px-4 border border-gray-400 rounded shadow;
+}
